@@ -1,5 +1,5 @@
 import '../app/globals.css'
-import {HeroBanner,Footer,Product} from '../components'
+import {HeroBanner,Footer,Product,FooterBanner} from '../components'
 import {client} from "@/sanity/lib/client"
 
 
@@ -40,7 +40,7 @@ export default async function Home() {
 
                 }
             </div>
-            <Footer />
+            <FooterBanner footerBanner={bannerData && bannerData[0]}/>
         </>
     )
 }
