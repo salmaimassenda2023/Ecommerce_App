@@ -1,9 +1,10 @@
 import '../app/globals.css'
+import {HeroBanner,Footer} from '../components'
 
 export default function Home() {
   return (
     <>
-      HeroBanner
+      <HeroBanner/>
 
       <div className="products-heading">
         <h2>Best Selling Product</h2>
@@ -14,7 +15,7 @@ export default function Home() {
         list of products
       </div>
 
-      Footer
+      <Footer/>
     </>
   );
 }
