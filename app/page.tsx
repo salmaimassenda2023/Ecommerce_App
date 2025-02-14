@@ -1,6 +1,7 @@
 import '../app/globals.css'
-import {HeroBanner,Footer} from '../components'
+import {HeroBanner,Footer,Product} from '../components'
 import {client} from "@/sanity/lib/client"
+
 
 async function getData() {
     try {
@@ -33,9 +34,10 @@ export default async function Home() {
                 <p>speaker There are many variations passages</p>
             </div>
 
-            <div className="product-container">
+            <div className="products-container">
                 {
-                    products?.map((product) => product.name)
+                    products?.map((product) => <Product key={product._id} product={product}/>)
+
                 }
             </div>
             <Footer />
