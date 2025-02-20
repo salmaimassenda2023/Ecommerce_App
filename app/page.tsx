@@ -21,9 +21,6 @@ async function getData() {
 // Notez le async ici et la récupération des données
 export default async function Home() {
     const { products, bannerData } = await getData()
-    // Log pour vérifier les données dans le composant
-    console.log("Dans le composant - Produits:", products)
-    console.log("Dans le composant - Bannière:", bannerData)
 
     return (
         <>
