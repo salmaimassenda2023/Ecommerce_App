@@ -14,7 +14,7 @@ export const CartContext = ( {children})=>{
     const [qty,setQty]=useState(1);
 
     // Fonction pour ajouter un produit au panier
-    const addToCar=(product,quantity)=>{
+    const addToCart=(product,quantity)=>{
         setTotalPrice((prevPrice)=>prevPrice + product.price *quantity);
         setTotalQty((prevQty)=> prevQty + quantity)
         const existingProduct = cartItems.find((item)=> item._id === product._id);
@@ -72,7 +72,7 @@ export const CartContext = ( {children})=>{
                 cartItems,setCartItems,
                 totalQty,setTotalQty,
                 qty,setQty,
-                addToCar,deleteFromCart,toggleCartItemQuantity,
+                addToCart,deleteFromCart,toggleCartItemQuantity,
                 incQty,decQty
             } }>
 

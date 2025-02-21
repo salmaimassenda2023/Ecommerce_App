@@ -4,6 +4,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { useEffect, useState, use } from "react";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from "react-icons/ai";
 import { Product as ProductComponent } from '../../../components'
+import {useCartContext} from '../../context/StateContext'
+import {ad} from "framer-motion/dist/types.d-6pKw1mTI";
 
 interface ProductPageProps {
     params: { slug: string };
@@ -21,13 +23,17 @@ interface SanityProduct {
 }
 
 const ProductDetails = ({ params }: ProductPageProps) => {
+    const unwrappedParams = use(params);
+    // get Context Variables
+    const {incQty,decQty,addToCar,setShowCart}=useCartContext();
+
+    // states
     const [product, setProduct] = useState<SanityProduct | null>(null);
     const [productsList, setProductsList] = useState<SanityProduct[]>([]);
     const [quantity, setQuantity] = useState(0);
     const [index, setIndex] = useState(0);
 
-    const unwrappedParams = use(params);
-
+    // fetch data from sanity
     useEffect(() => {
         const { slug } = unwrappedParams || {};
 
@@ -57,17 +63,12 @@ const ProductDetails = ({ params }: ProductPageProps) => {
 
     const { image, name, details, price } = product;
 
-    const decQuantity = () => {
-        setQuantity(prev => prev > 0 ? prev - 1 : 0);
-    };
+      // handel functions
+     const handleBuyNow=()=>{
 
-    const incQuantity = () => {
-        setQuantity(prev => prev + 1);
-    };
+     };
 
-    const handleAddToCart = () => {
-        // Implémentez votre logique de panier ici
-    };
+
 
     return (
         <div>
@@ -115,17 +116,17 @@ const ProductDetails = ({ params }: ProductPageProps) => {
                     <div className="quantity">
                         <h3>Quantity:</h3>
                         <p className="quantity-desc">
-                           <span className="minus" onClick={decQuantity}>
+                           <span className="minus" onClick={decQty}>
                                <AiOutlineMinus />
                            </span>
                             <span className="num">{quantity}</span>
-                            <span className="plus" onClick={incQuantity}>
+                            <span className="plus" onClick={incQty}>
                                <AiOutlinePlus />
                            </span>
                         </p>
                     </div>
                     <div className="buttons">
-                        <button type="button" className="add-to-cart" onClick={handleAddToCart}>
+                        <button type="button" className="add-to-cart" onClick={addToCar}>
                             Add to Cart
                         </button>
                         <button type="button" className="buy-now" onClick={handleAddToCart}>
