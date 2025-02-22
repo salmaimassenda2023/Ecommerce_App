@@ -13,11 +13,11 @@ const Navbar=()=>{
             <p className="logo">
                 <Link href="/"> IMA Headphones  </Link>
             </p>
-            <button type="button" className="cart-icon" >
+            <button type="button" className="cart-icon" onClick={()=> setShowCart(true)} >
                 <AiOutlineShopping />
                 <span className="cart-item-qty">{totalQty}</span>
             </button>
-            <Cart/>
+            {showCart && <Cart/>  }
 
         </div>
     )
