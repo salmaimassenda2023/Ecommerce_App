@@ -4,8 +4,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { useEffect, useState, use } from "react";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from "react-icons/ai";
 import { Product as ProductComponent } from '../../../components'
-import {useCartContext} from '../../context/StateContext'
-import {ad} from "framer-motion/dist/types.d-6pKw1mTI";
+import {useCartContext} from '../../context/CartContext'
+
 
 interface ProductPageProps {
     params: { slug: string };
@@ -25,12 +25,11 @@ interface SanityProduct {
 const ProductDetails = ({ params }: ProductPageProps) => {
     const unwrappedParams = use(params);
     // get Context Variables
-    const {incQty,decQty,addToCar,setShowCart}=useCartContext();
+    const {incQty,decQty,qty,addToCart,setShowCart}=useCartContext();
 
     // states
     const [product, setProduct] = useState<SanityProduct | null>(null);
     const [productsList, setProductsList] = useState<SanityProduct[]>([]);
-    const [quantity, setQuantity] = useState(0);
     const [index, setIndex] = useState(0);
 
     // fetch data from sanity
@@ -119,17 +118,17 @@ const ProductDetails = ({ params }: ProductPageProps) => {
                            <span className="minus" onClick={decQty}>
                                <AiOutlineMinus />
                            </span>
-                            <span className="num">{quantity}</span>
+                            <span className="num">{qty}</span>
                             <span className="plus" onClick={incQty}>
                                <AiOutlinePlus />
                            </span>
                         </p>
                     </div>
                     <div className="buttons">
-                        <button type="button" className="add-to-cart" onClick={addToCar}>
+                        <button type="button" className="add-to-cart" onClick={addToCart}>
                             Add to Cart
                         </button>
-                        <button type="button" className="buy-now" onClick={handleAddToCart}>
+                        <button type="button" className="buy-now" >
                             Buy Now
                         </button>
                     </div>

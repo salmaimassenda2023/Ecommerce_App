@@ -1,6 +1,8 @@
+'use client'
 import '../app/globals.css'
 import {HeroBanner,Footer,Product,FooterBanner} from '../components'
 import {client} from "@/sanity/lib/client"
+import {CartContext} from './context/CartContext'
 
 
 async function getData() {
@@ -23,21 +25,23 @@ export default async function Home() {
     const { products, bannerData } = await getData()
 
     return (
-        <>
-            <HeroBanner heroBanner={bannerData?.[0] || {}} />
 
-            <div className="products-heading">
-                <h2>Best Selling Product</h2>
-                <p>speaker There are many variations passages</p>
-            </div>
+           <>
+               <HeroBanner heroBanner={bannerData?.[0] || {}} />
 
-            <div className="products-container">
-                {
-                    products?.map((product) => <Product key={product._id} product={product}/>)
+               <div className="products-heading">
+                   <h2>Best Selling Product</h2>
+                   <p>speaker There are many variations passages</p>
+               </div>
 
-                }
-            </div>
-            <FooterBanner footerBanner={bannerData && bannerData[0]}/>
-        </>
+               <div className="products-container">
+                   {
+                       products?.map((product) => <Product key={product._id} product={product}/>)
+
+                   }
+               </div>
+               <FooterBanner footerBanner={bannerData && bannerData[0]}/>
+           </>
+
     )
 }
