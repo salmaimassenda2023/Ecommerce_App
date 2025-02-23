@@ -12,13 +12,16 @@
     "@sanity/client": "^6.28.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.75.0",
-    "next": "15.1.7",
+    "@stripe/stripe-js": "^5.6.0",
+    "canvas-confetti": "^1.9.3",
+    "next": "^15.1.7",
     "next-sanity": "^9.8.57",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "sanity": "^3.75.0",
+    "stripe": "^17.6.0",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {

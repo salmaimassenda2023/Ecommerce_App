@@ -15,24 +15,28 @@ const Cart = () => {
     const { totalPrice, cartItems, setShowCart, totalQty, deleteFromCart,toggleCartItemQuantity } = useCartContext();
 
     const handleCheckout = async () => {
-        // const stripe = await getStripe();
-        //
-        // const response = await fetch('/api/stripe', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(cartItems),
-        // });
-        //
-        // if(response.statusCode === 500) return;
-        //
-        // const data = await response.json();
-        //
-        // toast.loading('Redirecting...');
-        //
-        // stripe.redirectToCheckout({ sessionId: data.id });
-    }
+        try {
+            const response = await fetch('/api/checkout_sessions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cartItems: cartItems }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            window.location.href = data.url;
+
+        } catch (error) {
+            console.error('Error:', error);
+            toast.error('Une erreur est survenue lors du paiement');
+        }
+    };
 
     return (
         <div className="cart-wrapper" ref={cartRef}>

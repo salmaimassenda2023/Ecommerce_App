@@ -63,10 +63,11 @@ const ProductDetails = ({ params }: ProductPageProps) => {
     const { image, name, details, price } = product;
 
       // handel functions
-     const handleBuyNow=()=>{
+    const handleBuyNow = () => {
+        addToCart(product, qty);
 
-     };
-
+        setShowCart(true);
+    }
 
 
     return (
@@ -128,7 +129,7 @@ const ProductDetails = ({ params }: ProductPageProps) => {
                         <button type="button" className="add-to-cart" onClick={() => addToCart(product, qty)}>
                             Add to Cart
                         </button>
-                        <button type="button" className="buy-now" >
+                        <button type="button" className="buy-now" onClick={handleBuyNow} >
                             Buy Now
                         </button>
                     </div>
