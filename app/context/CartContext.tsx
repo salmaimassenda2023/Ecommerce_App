@@ -31,6 +31,7 @@ export const CartContext = ( {children})=>{
         }
         setCartItems(updatingCartItems);
         toast.success(`${quantity} ${product.name} ajouté au panier.`)
+        setShowCart(true);
 
     };
 
@@ -71,6 +72,7 @@ export const CartContext = ( {children})=>{
                 showCart,setShowCart,
                 cartItems,setCartItems,
                 totalQty,setTotalQty,
+                totalPrice,setTotalPrice,
                 qty,setQty,
                 addToCart,deleteFromCart,toggleCartItemQuantity,
                 incQty,decQty

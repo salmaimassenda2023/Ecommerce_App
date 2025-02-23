@@ -125,7 +125,7 @@ const ProductDetails = ({ params }: ProductPageProps) => {
                         </p>
                     </div>
                     <div className="buttons">
-                        <button type="button" className="add-to-cart" onClick={addToCart}>
+                        <button type="button" className="add-to-cart" onClick={() => addToCart(product, qty)}>
                             Add to Cart
                         </button>
                         <button type="button" className="buy-now" >

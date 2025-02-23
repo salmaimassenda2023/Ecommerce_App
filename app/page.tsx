@@ -1,8 +1,8 @@
-'use client'
+
 import '../app/globals.css'
 import {HeroBanner,Footer,Product,FooterBanner} from '../components'
 import {client} from "@/sanity/lib/client"
-import {CartContext} from './context/CartContext'
+
 
 
 async function getData() {
